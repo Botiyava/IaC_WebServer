@@ -18,13 +18,13 @@ resource "aws_instance" "myWebServer" {
 apt -y update
 apt -y install apache2
 myip=`curl http://169.254.169.254/update-rc.dlatest/meta-data/local-ipv4`
-echo "<html><body><h1>WebServer with IP:myip</h1><br><h1>Build by Terraform!</h1></body></html>" > /var/www/html/index.html
+echo "<html><body><h1>WebServer with IP:$myip</h1><br><h1>Build by Terraform!</h1></body></html>" > /var/www/html/index.html
 sudo service apache2 start
 update-rc.d apache2 defaults
 EOF
 
   tags = {
-    Name = myWebServer
+    Name = "myWebServer"
   }
 }
 
