@@ -13,7 +13,11 @@ resource "aws_instance" "myWebServer" {
   ami                    = "ami-0c6ebbd55ab05f070" # Ubuntu Linux AMI
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.webServerSG.id]
-  user_data              = file("externalScripts/nginx.sh")
+  user_data              = templatefile("externalScripts/user_data.tpl",{
+    name = "Leo",
+    surname = "忘却 強すぎます",
+    names = ["Go", "C++", "Python", "Julia"]
+  })
 
   tags = {
     Name = "myWebServer"
