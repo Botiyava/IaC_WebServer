@@ -4,12 +4,13 @@ apt -y install nginx
 
 cat <<EOF > /var/www/html/index.html
 <html>
-<h2> This page is created by Terraform + AWS EC2 <font color="blue"></h2><br>
-Owner ${name} ${surname} <br>
+<h2> <font color="blue"> This page is created by Terraform + AWS EC2</font> </h2><br>
+Owner ${name}  <br>
 
 %{for x in names ~}
-${name} like ${x}<br>
+<h3>${name} like ${x}</h3><br>
 %{endfor ~}
+
 </html>
 
 EOF
